@@ -1,0 +1,29 @@
+vector<int> productExceptSelf(vector<int>& nums) {
+         vector<int>mult;
+       
+        int i,j;
+        int res;
+        int left[nums.size()];
+        int right[nums.size()];
+        left[0]=nums[0];
+        right[nums.size()-1]=nums[nums.size()-1];
+      for(i=1;i<nums.size();i++)
+      {
+         left[i]=left[i-1]*nums[i];
+      }
+      for(i=nums.size()-2;i>=0;i--)
+      {
+        right[i]=right[i+1]*nums[i];
+      }
+       
+     mult.push_back(right[1]);
+      for(i=1;i<nums.size()-1;i++)
+      {
+          
+         
+          mult.push_back(left[i-1]*right[i+1]);
+          
+      }
+        mult.push_back(left[nums.size()-2]);
+       return mult;
+    }
